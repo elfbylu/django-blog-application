@@ -3,11 +3,20 @@
 # Flux
 # Micro Servis
 from django.shortcuts import render
+from .models import *
 
 
 # Create your views here.
 def indexPage(request):
-    return render(request, 'index.html')
+    context = {}
+    
+    blogs = BlogModel.objects.all()
+    
+    
+    
+    # SELECT * FROM BlogModel;
+    context['all_blogs'] = blogs
+    return render(request, 'index.html',context)
 
 
 
