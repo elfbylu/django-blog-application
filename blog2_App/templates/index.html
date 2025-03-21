@@ -6,7 +6,69 @@
 
 {% block site-içerik %}
 
-<h1>AnaSayfa</h1>
-<p>Burası AnaSayfa Content.</p>
+{% include "./components/_modal.html" %}
+
+<div class="d-flex align-items-center ">
+  <h1>En Son Yazılan Bloglar</h1>
+  <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="ms-auto btn btn-success">+</button>
+</div>
+
+<hr>
+{% for blog in all_blogs  %}
+<div class="mb-3">
+
+    
+      <div class="d-flex">
+        <h3>{{blog.author}}</h3>
+        
+        <div class="ms-auto options">
+
+          <a class="text-danger" href="{% url 'blog-delete-view' blog.id %}" onclick="confirmDeletion(event)">
+            Sil
+          </a>
+        
+
+          <a href="{% url 'blog-update-view' blog.id %}" class="text-info">Güncelle</a>
+        </div>
+     
+     
+      </div>
+    
+     <p>{{blog.post}}</p>
+     <p> <small> <span class="text-muted"> #{{blog.id}}</span> {{blog.createdit}}</small>  </p>
+     <p><small class="text-muted">{{blog.updateAt}}</small></p>
+</div> 
+
+
+
+
+<script>
+
+   function confirmDeletion(event) {
+
+      //buttonun annesini al
+      const a = event.target.parentElement
+      // event.target = a
+      event.preventDefault()
+
+      const onayla = window.confirm("Bu blog silinecek,emin misiniz?")
+
+      if (onayla) {
+
+            window.location.href = a.href
+
+
+      }
+
+
+
+
+  }
+
+</script>
+
+
+
+{% endfor %}
   
 {% endblock site-içerik %}

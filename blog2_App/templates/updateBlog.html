@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+
+{% block site-içerik  %}
+
+<h1> #{{blog.id}}postu güncelleniyor </h1>
+<hr>
+
+
+
+<form action="{% url 'blog-update-view' blog.id %}" method="post" class="w-50">
+    
+    {% csrf_token %}
+    
+    <div class="mb-3">
+
+        <input name="blogAuthor" type="text" class="form-control" value="{{blog.author}}">
+
+
+    </div>
+
+    <div class="mb-3">
+        <textarea name="blogPost" class="form-control">{{blog.post}}</textarea>
+
+    </div>
+
+    <div class="mb-3">
+        <button class="btn btn-success" type="submit">Güncelle</button>
+
+    </div>
+</form>
+
+{% endblock site-içerik %}

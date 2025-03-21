@@ -25,4 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",indexPage,name="home-view"),
     path('blog', blogDetail,name="blog-view"),
+    path('blog/<blogId>/sil', blogDelete,name="blog-delete-view"),
+    path('blog/<blogId>/guncelle', blogUpdate,name="blog-update-view")
 ]

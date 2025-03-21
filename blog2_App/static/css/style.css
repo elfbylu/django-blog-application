@@ -3,3 +3,21 @@ nav ul li a:hover{
     color: blueviolet !important;
 
 }
+ .blogText {
+    min-height:250px !important;
+
+}
+
+.options a {
+
+    text-decoration: none;
+    padding: 5px;
+    transition: 0.3s;
+}
+
+.options a:hover {
+
+    background-color: cadetblue;
+    color: black;
+    border-radius: 5px;
+}
